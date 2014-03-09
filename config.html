@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Panoptic</title>
+</head>
+<body>
+<h1>Panoptic</h1>
+
+<h2>Configuration</h2>
+
+<p>Panoptic, like all Thumb application, bundles all of its configuration files within the executable. However, all of these files may be overridden by the user. The location of the Thumb data override directory depends upon the operating system:</p>
+
+<p>Under Windows it is named <code>Thumb</code> and is found in the <code>APPDATA</code> directory. In my case:</p>
+
+<pre>
+C:/Users/rlk/AppData/Roaming/Thumb/
+</pre>
+
+<p>Under Linux and Mac OSX it is named <code>.thumb</code> and found in the <code>HOME</code> directory. On my Mac:</p>
+
+<pre>
+/Users/rlk/.thumb/
+</pre>
+
+<p>Any file placed in this directory will override a file with the same name in the Panoptic bundle.</p>
+
+<h2>Global Configuration Example</h2>
+
+<p>The file <code>conf.xml</code> enables the manipulation of a large number of Panoptic's internal variables. The default contents of <code>conf.xml</code> are</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;conf&gt;
+  &lt;option name="host_file"&gt;config/common/960x540-window.xml&lt;/option&gt;
+&lt;/conf&gt;
+</pre>
+
+<p>From this example it is clear how to change the display configuration that is used when Panoptic launches. If I always want to use my Rift DK1 on my Windows machine and I don't want to bother with changing it in-application, I would place the following XML in <code>C:/Users/rlk/AppData/Roaming/Thumb/conf.xml</code></p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;conf&gt;
+  &lt;option name="host_file"&gt;config/stereoscopic/oculus-dk1.xml&lt;/option&gt;
+&lt;/conf&gt;
+</pre>
+
+<p>The following options might also be of use.</p>
+
+<table>
+<tr><th>Name</th><th>Default</th><th>Definition</th></tr>
+<tr><td><code>key_move_F</code></td><td>26</td><td>View motion forward </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_W</code></a>)</td></tr>
+<tr><td><code>key_move_L</code></td><td> 4</td><td>View motion left    </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_A</code></a>)</td></tr>
+<tr><td><code>key_move_R</code></td><td> 7</td><td>View motion right   </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_D</code></a>)</td></tr>
+<tr><td><code>key_move_B</code></td><td>22</td><td>View motion backward</td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_S</code></a>)</td></tr>
+<tr><td><code>key_move_U</code></td><td> 8</td><td>View motion up      </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_E</code></a>)</td></tr>
+<tr><td><code>key_move_D</code></td><td>20</td><td>View motion down    </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_Q</code></a>)</td></tr>
+<tr><td><code>sans_size         </code></td><td>16</td><td>Size of sans-serif GUI text</td></tr>
+<tr><td><code>mono_size         </code></td><td>16</td><td>Size of mono-spaced GUI text</td></tr>
+<tr><td><code>sync              </code></td><td> 1</td><td>Vertical blanking synchronization interval</td></tr>
+<tr><td><code>view_lock_vertical</code></td><td> 0</td><td>Allow the view to pan but not tilt (good for VR)</td></tr>
+<tr><td><code>scm_cache_size    </code></td><td>16</td><td>Image cache size.</td></tr>
+</table>
+
+<p>The value <code>scm_cache_size</code> is of particular interest, as it can have a significant impact on performance. It controls the amount of VRAM used to cache texture images. Decreasing it can smooth out very bad performance due to texture thrashing on small GPUs. Increasing it can smooth ease IO load on large GPUs.</p>
+
+<h2>Display Configuration Example</h2>
+
+<p>As a configuration example, here is an alternate configuration for the Oculus Rift DK1, which has a native resolution of 1280&times;800. The default configuration uses a full-screen window at this resolution.</p>
+
+<p>However, I prefer to have the Rift connected as an extended desktop. My primary desktop is 2048&times;1152 and the Rift is to the right, aligned at the top. To configure this, I specify the <code>x</code> coordinate of the window to be 2048, and the <code>y</code> coordinate to be zero. The attribute <code>frame="0"</code> removes the window decoration, which would otherwise consume part of the non-full-screen visual. The <code>cursor="0"</code> attribute requests that the system cursor be hidden in this window. A virtual cursor, which appears in <i>both</i> eyes, replaces it.</p>
+
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;host&gt;
+  &lt;node name="default"&gt;
+    &lt;window w="1280" h="800" x="2048" y="0" frame="0" cursor="0" /&gt;
+    &lt;channel w="1280" h="1600"/&gt;
+    &lt;channel w="1280" h="1600"/&gt;
+    &lt;overlay&gt;
+      &lt;frustum&gt;
+        &lt;perspective hfov="100.0" vfov="75.0"/&gt;
+      &lt;/frustum&gt;
+    &lt;/overlay&gt;
+    &lt;display type="oculus" channel="0"&gt;
+      &lt;viewport x="0" y="0" w="640" h="800"/&gt;
+    &lt;/display&gt;
+    &lt;display type="oculus" channel="1"&gt;
+      &lt;viewport x="640" y="0" w="640" h="800"/&gt;
+    &lt;/display&gt;
+  &lt;/node&gt;
+&lt;/host&gt;
+</pre>
+
+<p>I place this data in <code>C:/Users/rlk/AppData/Roaming/Thumb/config/sterescopic/oculus-dk1.xml</code>. Because the name <code>config/sterescopic/oculus-dk1.xml</code> matches that of the bundled DK1 configuration file, that configuration is overridden.</p>
+
+<p>The other elements should be relatively clear. The <code>channel</code> elements give the resolution of the off-screen buffers that receive the scene rendering for each eye. The <code>display</code> elements indicate where each channel appears within the application window, and the <code>type="oculus"</code> attribute enables the spherical correction and head-tracking transform. The <code>overlay</code> element defines the location of the GUI, which may be enlarged or reduced by changing the field-of-view values appearing there.</p>
+
+<p>For comparison, the <a href="https://github.com/rlk/scmview/blob/master/data/config/stereoscopic/oculus-dk1.xml">bundled DK1 configuration</a> is identical in every way but one. It differs in the <code>window</code> element, where it requests a full-screen visual at 1280&times;800 with the cursor hidden.</p>
+
+<pre>
+&lt;window w="1280" h="800" full="1" cursor="0"/&gt;
+</pre>
+
+</body>
+</html>
