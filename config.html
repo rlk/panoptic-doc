@@ -5,6 +5,19 @@
 <body>
 <h1>Panoptic</h1>
 
+<h2>Run-time Options</h2>
+
+<p>These are the useful function keys.</p>
+
+<table>
+<tr><td>F1</td><td>Toggle the GUI</td></tr>
+<tr><td>F2</td><td>Toggle wireframe rendering</td></tr>
+<tr><td>F3</td><td>Toggle motion blur</td></tr>
+<tr><td>F4</td><td>Toggle the cache overlay</td></tr>
+<tr><td>F5</td><td>Flush and reload all caches</td></tr>
+<tr><td>F10</td><td>Take a screenshot and write it to <code>snap.png</code></td></tr>
+</table>
+
 <h2>Configuration</h2>
 
 <p>Panoptic, like all Thumb application, bundles all of its configuration files within the executable. However, all of these files may be overridden by the user. The location of the Thumb data override directory depends upon the operating system:</p>
@@ -23,7 +36,7 @@ C:/Users/rlk/AppData/Roaming/Thumb/
 
 <p>Any file placed in this directory will override a file with the same name in the Panoptic bundle.</p>
 
-<h2>Global Configuration Example</h2>
+<h2>Configuration Options</h2>
 
 <p>The file <code>conf.xml</code> enables the manipulation of a large number of Panoptic's internal variables. The default contents of <code>conf.xml</code> are</p>
 
@@ -62,9 +75,9 @@ C:/Users/rlk/AppData/Roaming/Thumb/
 
 <p>The value <code>scm_cache_size</code> is of particular interest, as it can have a significant impact on performance. It controls the amount of VRAM used to cache texture images. Decreasing it can smooth out very bad performance due to texture thrashing on small GPUs. Increasing it can smooth ease IO load on large GPUs.</p>
 
-<h2>Display Configuration Example</h2>
+<h2>Display Configuration</h2>
 
-<p>As a configuration example, here is an alternate configuration for the Oculus Rift DK1, which has a native resolution of 1280&times;800. The default configuration uses a full-screen window at this resolution.</p>
+<p>As a further configuration example, here is an alternate configuration for the Oculus Rift DK1, which has a native resolution of 1280&times;800. The default configuration uses a full-screen window at this resolution.</p>
 
 <p>However, I prefer to have the Rift connected as an extended desktop. My primary desktop is 2048&times;1152 and the Rift is to the right, aligned at the top. To configure this, I specify the <code>x</code> coordinate of the window to be 2048, and the <code>y</code> coordinate to be zero. The attribute <code>frame="0"</code> removes the window decoration, which would otherwise consume part of the non-full-screen visual. The <code>cursor="0"</code> attribute requests that the system cursor be hidden in this window. A virtual cursor, which appears in <i>both</i> eyes, replaces it.</p>
 
