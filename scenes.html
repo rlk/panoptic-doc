@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Panoptic</title>
+</head>
+<body>
+<h1>Panoptic</h1>
+
+<p>The following is a detailed listing of the ten examples appearing in <a href="https://github.com/rlk/scmview/blob/master/data/scm/Examples.xml">Example.xml</a> bundled with Panoptic. These demonstrate most, if not all, of the capability of the shaders in the default bundle. With a basic understanding of XML, this document should provide enough background to modify the examples or to generate new ones.</p>
+
+<p>All of the lunar imagery shown here is derived from data captured by the <a href="http://lunar.gsfc.nasa.gov">Lunar Reconnaissance Orbiter (LRO)</a>. Sources include the <a href="http://lunar.gsfc.nasa.gov/lola.html">Lunar Orbiter Laser Altimeter (LOLA)</a>, the <a href="http://lunar.gsfc.nasa.gov/mini-rf.html">Mini Radio Frequency (Mini-RF)</a> synthetic aperture radar, the <a href="http://lroc.sese.asu.edu">Lunar Reconnaissance Orbiter Camera (LROC)</a> Wide Angle Camera (WAC) and Narrow Angle Camera (NAC), and <a href="http://wms.lroc.asu.edu/lroc/view_rdr/WAC_GLD100">the 100-meter Global Lunar DTM (GLD100)</a> which was derived from stereo WAC imagery.</p>
+
+<p>The panoramic images were captured in and around Baton Rouge, Louisiana, using the <a href="http://csc.lsu.edu/~kooima/panorama/index.html">CAVECam</a> omnistereoscopic panoramic camera.</p>
+
+<h2>The Scenes</h2>
+
+<table>
+<tr><td><img src="img/example0.jpg"></td><td>
+<h3>Example 0.</h3>
+<pre>
+&lt;scene name="Global" vert="glsl/scm-displace.vert" frag="glsl/scm-basic.frag"&gt;
+  &lt;image name="height" scm="DTM-254-7.tif" k0="1728240" k1="1748170"/&gt;
+  &lt;image name="color" scm="WAC-254-7.tif" k0="0.0" k1="3.0"/&gt;
+&lt;/scene&gt;
+</pre>
+<p>This is the best example for exploring the Moon and appreciating its beauty. The scene uses the vertex <a href="https://github.com/rlk/scmview/blob/master/data/glsl/scm-displace.xml">displacement</a> shader to render <a href="https://www.cct.lsu.edu/~rkooima/data/DTM-254-7.tif">DTM</a> as a height map. DTM is a seamless merger of LOLA (which is good at the poles but bad at the equator) with GLD100 (good at the equator but bad at the poles). The <a href="https://www.cct.lsu.edu/~rkooima/data/WAC-254-7.tif">WAC</a> global mosaic is mapped onto this by the <a href="https://github.com/rlk/scmview/blob/master/data/glsl/scm-basic.xml">basic</a> gragment shader. The DTM is normalized to a range of 1,728,240m to 1,748,170m to match the scale of the Moon one-to-one. The WAC is stretched a bit to brighten it.</p>
+</td></tr>
+
+<tr><td><img src="img/example1.jpg"></td><td>
+<h3>Example 1.</h3>
+<pre>
+&lt;scene name="Height" vert="glsl/scm-displace.vert"
+                     frag="glsl/scm-relief-colormap-scalar.frag"
+                     label="IAUMOON.csv" r="0" g="0" b="0" a="255"&gt;
+  &lt;image name="height" scm="DTM-254-7.tif" k0="1728240" k1="1748170"/&gt;
+  &lt;image name="normal" scm="DTM-254-7-N.tif"/&gt;
+  &lt;image name="scalar" scm="DTM-254-7.tif"/&gt;
+&lt;/scene&gt;
+</pre>
+<p>This scene emphasizes terrain, using <a href="https://www.cct.lsu.edu/~rkooima/data/DTM-254-7.tif">DTM</a> three ways. First it is used as a displacement map as in Example 0, second as a scalar field colorized by a <a href="https://github.com/rlk/scmview/blob/master/data/glsl/scm-relief-colormap-scalar.xml">color mapping</a> shader, and third as a <a href="https://www.cct.lsu.edu/~rkooima/data/DTM-254-7-N.tif">normal map</a> which enables shaded relief. The complete <a href="http://planetarynames.wr.usgs.gov/Page/MOON/target">IAU lunar nomenclature</a> is drawn atop in opaque black.</p>
+</td></tr>
+
+<tr><td><img src="img/example2.jpg"></td><td>
+<h3>Example 2.</h3>
+<pre>
+&lt;scene name="LDSM" vert="glsl/scm-displace.vert"
+                   frag="glsl/scm-relief-colormap-scalar.frag"
+                   label="graticule.csv" r="0" g="0" b="0" a="255"&gt
+  &lt;image name="height" scm="DTM-254-7.tif" k0="1728240" k1="1748170" /&gt;
+  &lt;image name="normal" scm="DTM-254-7-N.tif" /&gt;
+  &lt;image name="scalar" scm="LDSM-254-4.tif" k0="0.0" k1="2.0"/&gt;
+&lt;/scene&gt;
+</pre>
+<p>This scene is shows shaded relief of a displaced surface as in Example 1, but this time with a separate color-mapped scalar data set applied. This is the Lunar Digital Slope Map, <a href="https://www.cct.lsu.edu/~rkooima/data/DTM-254-7-N.tif">LDSM</a>, a secondary product of the Laser Altimeter. A 10-degree graticule is drawn atop in opaque black.</p>
+</td></tr>
+
+<tr><td><img src="img/example3.jpg"></td><td>
+<h3>Example 3.</h3>
+</td></tr>
+
+<tr><td><img src="img/example4.jpg"></td><td>
+<h3>Example 4.</h3>
+</td></tr>
+
+<tr><td><img src="img/example5.jpg"></td><td>
+<h3>Example 5.</h3>
+</td></tr>
+
+<tr><td><img src="img/example6.jpg"></td><td>
+<h3>Example 6.</h3>
+</td></tr>
+
+<tr><td><img src="img/example7.jpg"></td><td>
+<h3>Example 7.</h3>
+</td></tr>
+
+<tr><td><img src="img/example8.jpg"></td><td>
+<h3>Example 8.</h3>
+</td></tr>
+
+<tr><td><img src="img/example9.jpg"></td><td>
+<h3>Example 9.</h3>
+</td></tr>
+
+</table>
+
+</body>
+</html>
