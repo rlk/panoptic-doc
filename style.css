@@ -21,8 +21,7 @@ code {
 }
 
 pre {
-  margin-left: 2em;
-  line-height: 20px;
+  line-height: 18px;
   font-family: "Consolas", "Courier New", monospace;
   font-size: 15px;
   color: #999;
