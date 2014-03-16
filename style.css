@@ -48,8 +48,24 @@ table {
   margin-right: auto;
 }
 
-td {
-  vertical-align: top;
+td.file {
+  vertical-align: baseline;
+  padding-right: 1em;
+}
+
+td.size {
+  vertical-align: baseline;
+  text-align: right;
+  padding-right: 1em;
+  color: gray;
+}
+
+td.hash {
+  vertical-align: baseline;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 66%;
+  text-align: right;
+  color: gray;
 }
 
 h1 {
