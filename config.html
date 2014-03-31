@@ -36,7 +36,7 @@
     /Users/rlk/.thumb/
 </pre>
 
-<p>Any file placed in this directory will override a file with the same name in the Panoptic bundle. For a complete accounting of the assets and configuration in the bundle, see the <a href="https://github.com/rlk/scmview/tree/master/data">Panoptic data directory</a>.</p>
+<p>Any file placed in this directory will override a file with the same name in the Panoptic bundle.</p>
 
 <h2>Options</h2>
 
@@ -83,11 +83,11 @@
 <pre>
     C:/Users/rlk/AppData/Roaming/Thumb/options.xml
 </pre>
-or
+or&hellip;
 <pre>
     /Users/rlk/.thumb/options.xml
 </pre>
-</p>
+and modify it as needed.</p>
 
 <p>Keyboard controls are defined using <a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h">SDL scancodes</a>. The gamepad axis and buttons define reasonable values for an XBox 360 Wireless Controller for Windows.</p>
 
@@ -113,25 +113,25 @@ to
 <p>However, I prefer to have the Rift connected as an extended desktop. My primary desktop is 2048&times;1152 and the Rift is to the right, aligned at the top. To configure this, I specify the <code>x</code> coordinate of the window to be 2048, and the <code>y</code> coordinate to be zero. The attribute <code>frame="0"</code> removes the window decoration, which would otherwise consume part of the non-full-screen visual. The <code>cursor="0"</code> attribute requests that the system cursor be hidden in this window. A virtual cursor, which appears in <i>both</i> eyes, replaces it.</p>
 
 <pre>
-&lt;?xml version="1.0"?&gt;
-&lt;host&gt;
-  &lt;node name="default"&gt;
-    &lt;window w="1280" h="800" x="2048" y="0" frame="0" cursor="0" /&gt;
-    &lt;channel w="1280" h="1600"/&gt;
-    &lt;channel w="1280" h="1600"/&gt;
-    &lt;overlay&gt;
-      &lt;frustum&gt;
-        &lt;perspective hfov="100.0" vfov="75.0"/&gt;
-      &lt;/frustum&gt;
-    &lt;/overlay&gt;
-    &lt;display type="oculus" channel="0"&gt;
-      &lt;viewport x="0" y="0" w="640" h="800"/&gt;
-    &lt;/display&gt;
-    &lt;display type="oculus" channel="1"&gt;
-      &lt;viewport x="640" y="0" w="640" h="800"/&gt;
-    &lt;/display&gt;
-  &lt;/node&gt;
-&lt;/host&gt;
+    &lt;?xml version="1.0"?&gt;
+    &lt;host&gt;
+      &lt;node name="default"&gt;
+        &lt;window w="1280" h="800" x="2048" y="0" frame="0" cursor="0" /&gt;
+        &lt;channel w="1280" h="1600"/&gt;
+        &lt;channel w="1280" h="1600"/&gt;
+        &lt;overlay&gt;
+          &lt;frustum&gt;
+            &lt;perspective hfov="100.0" vfov="75.0"/&gt;
+          &lt;/frustum&gt;
+        &lt;/overlay&gt;
+        &lt;display type="oculus" channel="0"&gt;
+          &lt;viewport x="0" y="0" w="640" h="800"/&gt;
+        &lt;/display&gt;
+        &lt;display type="oculus" channel="1"&gt;
+          &lt;viewport x="640" y="0" w="640" h="800"/&gt;
+        &lt;/display&gt;
+      &lt;/node&gt;
+    &lt;/host&gt;
 </pre>
 
 <p>I place this data in <code>C:/Users/rlk/AppData/Roaming/Thumb/config/sterescopic/oculus-dk1.xml</code>. Because the name <code>config/sterescopic/oculus-dk1.xml</code> matches that of the bundled DK1 configuration file, that configuration is overridden.</p>
@@ -143,6 +143,10 @@ to
 <pre>
     &lt;window w="1280" h="800" full="1" cursor="0"/&gt;
 </pre>
+
+<h2>Total Configuration</h2>
+
+<p>For a <i>complete</i> accounting of the assets and configuration in the bundle, see the <a href="https://github.com/rlk/scmview/tree/master/data">Panoptic data directory</a>, which overrides the <a href="https://github.com/rlk/thumb/tree/master/data">Thumb data directory</a>.</p>
 
 </body>
 </html>
