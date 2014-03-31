@@ -20,6 +20,11 @@ code {
   color: #999;
 }
 
+tt {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 15px;
+}
+
 pre {
   line-height: 18px;
   font-family: "Consolas", "Courier New", monospace;
@@ -69,11 +74,6 @@ td.hash {
   font-size: 66%;
   text-align: right;
   color: gray;
-}
-
-td.num {
-  text-align: right;
-  padding-right: 1em;
 }
 
 h1 {

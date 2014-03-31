@@ -27,85 +27,88 @@
 <p>Under Windows it is named <code>Thumb</code> and is found in the <code>APPDATA</code> directory. In my case:</p>
 
 <pre>
-C:/Users/rlk/AppData/Roaming/Thumb/
+    C:/Users/rlk/AppData/Roaming/Thumb/
 </pre>
 
 <p>Under Linux and Mac OSX it is named <code>.thumb</code> and found in the <code>HOME</code> directory. On my Mac:</p>
 
 <pre>
-/Users/rlk/.thumb/
+    /Users/rlk/.thumb/
 </pre>
 
 <p>Any file placed in this directory will override a file with the same name in the Panoptic bundle. For a complete accounting of the assets and configuration in the bundle, see the <a href="https://github.com/rlk/scmview/tree/master/data">Panoptic data directory</a>.</p>
 
 <h2>Options</h2>
 
-<p>The file <code>options.xml</code> enables the manipulation of a large number of Panoptic's internal variables. The default contents of <code>options.xml</code> are</p>
-
-<pre>
-&lt;?xml version="1.0"?&gt;
-&lt;conf&gt;
-  &lt;option name="host_file"&gt;config/common/960x540-window.xml&lt;/option&gt;
-  &lt;option name="input_mode"&gt;gamepad&lt;/option&gt;
-&lt;/conf&gt;
-</pre>
-
-<p>These options specify that the application shoult start in a 960&times540 window, and that gamepad support should be enabled.</p>
-
-<p>If I always want to use my Rift DK1 on my Windows machine and I don't want to bother with changing it in-application, I would place the following XML in <code>C:/Users/rlk/AppData/Roaming/Thumb/conf.xml</code></p>
-
-<pre>
-&lt;?xml version="1.0"?&gt;
-&lt;conf&gt;
-  &lt;option name="host_file"&gt;config/stereoscopic/oculus-dk1.xml&lt;/option&gt;
-  &lt;option name="input_mode"&gt;gamepad&lt;/option&gt;
-&lt;/conf&gt;
-</pre>
-
-<p>The following options might also be of use. Keyboard controls are defined using <a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h">SDL scancodes.</a></p>
+<p><a href="options.xml">The file <tt>options.xml</tt></a> enables the manipulation of a large number of Panoptic's internal variables.</p>
 
 <table>
-<tr><th>Keyboard Controls</th><th>Default&nbsp;&nbsp;</th><th>Definition</th></tr>
-<tr><td><code>key_move_R</code></td><td class="num"> 7</td><td>View motion right</td></tr>
-<tr><td><code>key_move_L</code></td><td class="num"> 4</td><td>View motion left</td></tr>
-<tr><td><code>key_move_U</code></td><td class="num"> 8</td><td>View motion up</td></tr>
-<tr><td><code>key_move_D</code></td><td class="num">20</td><td>View motion down</td></tr>
-<tr><td><code>key_move_B</code></td><td class="num">22</td><td>View motion backward</td></tr>
-<tr><td><code>key_move_F</code></td><td class="num">26</td><td>View motion forward</td></tr>
+<tr><th>Rendering configuration</th><th>Key</th><th>Default Value</th></tr>
+<tr><td>Display configuration</td><td><code>config_file</code></td><td>config/common/960x540-window.xml</td></tr>
+<tr><td>Size of sans-serif GUI text</td><td><code>sans_size</code></td><td>16</td></tr>
+<tr><td>Size of mono-spaced GUI text</td><td><code>mono_size</code></td><td>16</td></tr>
+<tr><td>Vertical blanking sync interval</td><td><code>sync</code></td><td> 1</td></tr>
+<tr><td>Image cache size</td><td><code>scm_cache_size</code></td><td>16</td></tr>
+<tr><td>Input device</td><td><code>input_mode</code></td><td>gamepad</td></tr>
+
+<tr><th>Keyboard Controls</th></tr>
+<tr><td>View motion right</td><td><code>key_move_R</code></td><td> 7</td></tr>
+<tr><td>View motion left</td><td><code>key_move_L</code></td><td> 4</td></tr>
+<tr><td>View motion up</td><td><code>key_move_U</code></td><td> 8</td></tr>
+<tr><td>View motion down</td><td><code>key_move_D</code></td><td>20</td></tr>
+<tr><td>View motion backward</td><td><code>key_move_B</code></td><td>22</td></tr>
+<tr><td>View motion forward</td><td><code>key_move_F</code></td><td>26</td></tr>
 
 <tr><th>Gamepad Axes</th></tr>
-<tr><td><code>gamepad_axis_pos_x</code></td><td class="num"> 0</td><td>View motion right</td></tr>
-<tr><td><code>gamepad_axis_neg_x</code></td><td class="num">-1</td><td>View motion left</td></tr>
-<tr><td><code>gamepad_axis_pos_y</code></td><td class="num"> 5</td><td>View motion up</td></tr>
-<tr><td><code>gamepad_axis_neg_y</code></td><td class="num"> 2</td><td>View motion down</td></tr>
-<tr><td><code>gamepad_axis_pos_z</code></td><td class="num"> 1</td><td>View motion backwant</td></tr>
-<tr><td><code>gamepad_axis_neg_z</code></td><td class="num">-1</td><td>View motion forward</td></tr>
-<tr><td><code>gamepad_axis_pos_yaw</code></td><td class="num">-1</td><td>View rotation right</td></tr>
-<tr><td><code>gamepad_axis_neg_yaw</code></td><td class="num"> 3</td><td>View rotation left</td></tr>
-<tr><td><code>gamepad_axis_pos_pitch</code></td><td class="num">-1</td><td>View rotation up</td></tr>
-<tr><td><code>gamepad_axis_neg_pitch</code></td><td class="num"> 4</td><td>View rotation down</td></tr>
+<tr><td>View motion right</td><td><code>gamepad_axis_pos_x</code></td><td> 0</td></tr>
+<tr><td>View motion left</td><td><code>gamepad_axis_neg_x</code></td><td>-1</td></tr>
+<tr><td>View motion up</td><td><code>gamepad_axis_pos_y</code></td><td> 5</td></tr>
+<tr><td>View motion down</td><td><code>gamepad_axis_neg_y</code></td><td> 2</td></tr>
+<tr><td>View motion backwant</td><td><code>gamepad_axis_pos_z</code></td><td> 1</td></tr>
+<tr><td>View motion forward</td><td><code>gamepad_axis_neg_z</code></td><td>-1</td></tr>
+<tr><td>View rotation right</td><td><code>gamepad_axis_pos_yaw</code></td><td>-1</td></tr>
+<tr><td>View rotation left</td><td><code>gamepad_axis_neg_yaw</code></td><td> 3</td></tr>
+<tr><td>View rotation up</td><td><code>gamepad_axis_pos_pitch</code></td><td>-1</td></tr>
+<tr><td>View rotation down</td><td><code>gamepad_axis_neg_pitch</code></td><td> 4</td></tr>
 
 <tr><th>Gamepad Buttons</th></tr>
-<tr><td><code>view_button_next</code></td><td class="num">14</td><td>Switch to next scene</td></tr>
-<tr><td><code>view_button_prev</code></td><td class="num">13</td><td>Switch to previous scene</td></tr>
-<tr><td><code>view_button_zoom_in</code></td><td class="num"> 1</td><td>Zoom in</td></tr>
-<tr><td><code>view_button_zoom_out</code></td><td class="num"> 0</td><td>Zoom out</td></tr>
-<tr><td><code>view_button_control</code></td><td class="num"> 5</td><td>Control modifier</td></tr>
-
-<tr><th>Rendering configuration</th></tr>
-<tr><td><code>sans_size</code></td><td class="num">16</td><td>Size of sans-serif GUI text</td></tr>
-<tr><td><code>mono_size</code></td><td class="num">16</td><td>Size of mono-spaced GUI text</td></tr>
-<tr><td><code>sync</code></td><td class="num"> 1</td><td>Vertical blanking synchronization interval</td></tr>
-<tr><td><code>scm_cache_size</code></td><td class="num">16</td><td>Image cache size</td></tr>
+<tr><td>Switch to next scene</td><td><code>view_button_next</code></td><td>14</td></tr>
+<tr><td>Switch to previous scene</td><td><code>view_button_prev</code></td><td>13</td></tr>
+<tr><td>Zoom in</td><td><code>view_button_zoom_in</code></td><td> 1</td></tr>
+<tr><td>Zoom out</td><td><code>view_button_zoom_out</code></td><td> 0</td></tr>
+<tr><td>Control modifier</td><td><code>view_button_control</code></td><td> 5</td></tr>
 </table>
 
-<p>The gamepad axis and buttons define reasonable values for an XBox 360 Controller for Windows, which works well on all platforms.</p>
+<p><a href="options.xml">This <tt>options.xml</tt> file contains all of these default values.</a>  It's a good place to start if you need to modify any of them. Download it to your configuration directory&hellip;
+<pre>
+    C:/Users/rlk/AppData/Roaming/Thumb/options.xml
+</pre>
+or
+<pre>
+    /Users/rlk/.thumb/options.xml
+</pre>
+</p>
+
+<p>Keyboard controls are defined using <a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h">SDL scancodes</a>. The gamepad axis and buttons define reasonable values for an XBox 360 Wireless Controller for Windows.</p>
 
 <p>The value <code>scm_cache_size</code> is of particular interest, as it can have a significant impact on performance. It controls the amount of VRAM used to cache texture images. Decreasing it can smooth out very bad performance due to texture thrashing on small GPUs. Increasing it can smooth ease IO load on large GPUs.</p>
 
+
+<h2>Options Example</h2>
+
+<p>If I always want to use my Rift DK1 on my Windows machine and I don't want to bother with changing it in-application, I would change the line
+<pre>
+   &lt;option name="config_file"&gt;config/config/common/960x540-window.xml&lt;/option&gt;
+</pre>
+to
+<pre>
+   &lt;option name="config_file"&gt;config/stereoscopic/oculus-dk1.xml&lt;/option&gt;
+</pre>
+</p>
+
 <h2>Display Configuration</h2>
 
-<p>As a further configuration example, here is an alternate configuration for the Oculus Rift DK1, which has a native resolution of 1280&times;800. The default configuration uses a full-screen window at this resolution.</p>
+<p>As a further configuration example, let's modify the configuration of the Oculus Rift DK1. It has a native resolution of 1280&times;800 and default configuration uses a full-screen window at this resolution.</p>
 
 <p>However, I prefer to have the Rift connected as an extended desktop. My primary desktop is 2048&times;1152 and the Rift is to the right, aligned at the top. To configure this, I specify the <code>x</code> coordinate of the window to be 2048, and the <code>y</code> coordinate to be zero. The attribute <code>frame="0"</code> removes the window decoration, which would otherwise consume part of the non-full-screen visual. The <code>cursor="0"</code> attribute requests that the system cursor be hidden in this window. A virtual cursor, which appears in <i>both</i> eyes, replaces it.</p>
 
@@ -138,7 +141,7 @@ C:/Users/rlk/AppData/Roaming/Thumb/
 <p>For comparison, the <a href="https://github.com/rlk/scmview/blob/master/data/config/stereoscopic/oculus-dk1.xml">bundled DK1 configuration</a> is identical in every way but one. It differs in the <code>window</code> element, where it requests a full-screen visual at 1280&times;800 with the cursor hidden.</p>
 
 <pre>
-&lt;window w="1280" h="800" full="1" cursor="0"/&gt;
+    &lt;window w="1280" h="800" full="1" cursor="0"/&gt;
 </pre>
 
 </body>
