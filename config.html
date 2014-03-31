@@ -38,42 +38,68 @@ C:/Users/rlk/AppData/Roaming/Thumb/
 
 <p>Any file placed in this directory will override a file with the same name in the Panoptic bundle. For a complete accounting of the assets and configuration in the bundle, see the <a href="https://github.com/rlk/scmview/tree/master/data">Panoptic data directory</a>.</p>
 
-<h2>Configuration Options</h2>
+<h2>Options</h2>
 
-<p>The file <code>conf.xml</code> enables the manipulation of a large number of Panoptic's internal variables. The default contents of <code>conf.xml</code> are</p>
+<p>The file <code>options.xml</code> enables the manipulation of a large number of Panoptic's internal variables. The default contents of <code>options.xml</code> are</p>
 
 <pre>
 &lt;?xml version="1.0"?&gt;
 &lt;conf&gt;
   &lt;option name="host_file"&gt;config/common/960x540-window.xml&lt;/option&gt;
+  &lt;option name="input_mode"&gt;gamepad&lt;/option&gt;
 &lt;/conf&gt;
 </pre>
 
-<p>From this example it is clear how to change the display configuration that is used when Panoptic launches. If I always want to use my Rift DK1 on my Windows machine and I don't want to bother with changing it in-application, I would place the following XML in <code>C:/Users/rlk/AppData/Roaming/Thumb/conf.xml</code></p>
+<p>These options specify that the application shoult start in a 960&times540 window, and that gamepad support should be enabled.</p>
+
+<p>If I always want to use my Rift DK1 on my Windows machine and I don't want to bother with changing it in-application, I would place the following XML in <code>C:/Users/rlk/AppData/Roaming/Thumb/conf.xml</code></p>
 
 <pre>
 &lt;?xml version="1.0"?&gt;
 &lt;conf&gt;
   &lt;option name="host_file"&gt;config/stereoscopic/oculus-dk1.xml&lt;/option&gt;
+  &lt;option name="input_mode"&gt;gamepad&lt;/option&gt;
 &lt;/conf&gt;
 </pre>
 
-<p>The following options might also be of use.</p>
+<p>The following options might also be of use. Keyboard controls are defined using <a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h">SDL scancodes.</a></p>
 
 <table>
-<tr><th>Name</th><th>Default</th><th>Definition</th></tr>
-<tr><td><code>key_move_F</code></td><td>26</td><td>View motion forward </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_W</code></a>)</td></tr>
-<tr><td><code>key_move_L</code></td><td> 4</td><td>View motion left    </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_A</code></a>)</td></tr>
-<tr><td><code>key_move_R</code></td><td> 7</td><td>View motion right   </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_D</code></a>)</td></tr>
-<tr><td><code>key_move_B</code></td><td>22</td><td>View motion backward</td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_S</code></a>)</td></tr>
-<tr><td><code>key_move_U</code></td><td> 8</td><td>View motion up      </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_E</code></a>)</td></tr>
-<tr><td><code>key_move_D</code></td><td>20</td><td>View motion down    </td><td>(<a href="http://www.libsdl.org/tmp/SDL/include/SDL_scancode.h"><code>SDL_SCANCODE_Q</code></a>)</td></tr>
-<tr><td><code>sans_size         </code></td><td>16</td><td>Size of sans-serif GUI text</td></tr>
-<tr><td><code>mono_size         </code></td><td>16</td><td>Size of mono-spaced GUI text</td></tr>
-<tr><td><code>sync              </code></td><td> 1</td><td>Vertical blanking synchronization interval</td></tr>
-<tr><td><code>view_lock_vertical</code></td><td> 0</td><td>Allow the view to pan but not tilt (good for VR)</td></tr>
-<tr><td><code>scm_cache_size    </code></td><td>16</td><td>Image cache size.</td></tr>
+<tr><th>Keyboard Controls</th><th>Default&nbsp;&nbsp;</th><th>Definition</th></tr>
+<tr><td><code>key_move_R</code></td><td class="num"> 7</td><td>View motion right</td></tr>
+<tr><td><code>key_move_L</code></td><td class="num"> 4</td><td>View motion left</td></tr>
+<tr><td><code>key_move_U</code></td><td class="num"> 8</td><td>View motion up</td></tr>
+<tr><td><code>key_move_D</code></td><td class="num">20</td><td>View motion down</td></tr>
+<tr><td><code>key_move_B</code></td><td class="num">22</td><td>View motion backward</td></tr>
+<tr><td><code>key_move_F</code></td><td class="num">26</td><td>View motion forward</td></tr>
+
+<tr><th>Gamepad Axes</th></tr>
+<tr><td><code>gamepad_axis_pos_x</code></td><td class="num"> 0</td><td>View motion right</td></tr>
+<tr><td><code>gamepad_axis_neg_x</code></td><td class="num">-1</td><td>View motion left</td></tr>
+<tr><td><code>gamepad_axis_pos_y</code></td><td class="num"> 5</td><td>View motion up</td></tr>
+<tr><td><code>gamepad_axis_neg_y</code></td><td class="num"> 2</td><td>View motion down</td></tr>
+<tr><td><code>gamepad_axis_pos_z</code></td><td class="num"> 1</td><td>View motion backwant</td></tr>
+<tr><td><code>gamepad_axis_neg_z</code></td><td class="num">-1</td><td>View motion forward</td></tr>
+<tr><td><code>gamepad_axis_pos_yaw</code></td><td class="num">-1</td><td>View rotation right</td></tr>
+<tr><td><code>gamepad_axis_neg_yaw</code></td><td class="num"> 3</td><td>View rotation left</td></tr>
+<tr><td><code>gamepad_axis_pos_pitch</code></td><td class="num">-1</td><td>View rotation up</td></tr>
+<tr><td><code>gamepad_axis_neg_pitch</code></td><td class="num"> 4</td><td>View rotation down</td></tr>
+
+<tr><th>Gamepad Buttons</th></tr>
+<tr><td><code>view_button_next</code></td><td class="num">14</td><td>Switch to next scene</td></tr>
+<tr><td><code>view_button_prev</code></td><td class="num">13</td><td>Switch to previous scene</td></tr>
+<tr><td><code>view_button_zoom_in</code></td><td class="num"> 1</td><td>Zoom in</td></tr>
+<tr><td><code>view_button_zoom_out</code></td><td class="num"> 0</td><td>Zoom out</td></tr>
+<tr><td><code>view_button_control</code></td><td class="num"> 5</td><td>Control modifier</td></tr>
+
+<tr><th>Rendering configuration</th></tr>
+<tr><td><code>sans_size</code></td><td class="num">16</td><td>Size of sans-serif GUI text</td></tr>
+<tr><td><code>mono_size</code></td><td class="num">16</td><td>Size of mono-spaced GUI text</td></tr>
+<tr><td><code>sync</code></td><td class="num"> 1</td><td>Vertical blanking synchronization interval</td></tr>
+<tr><td><code>scm_cache_size</code></td><td class="num">16</td><td>Image cache size</td></tr>
 </table>
+
+<p>The gamepad axis and buttons define reasonable values for an XBox 360 Controller for Windows, which works well on all platforms.</p>
 
 <p>The value <code>scm_cache_size</code> is of particular interest, as it can have a significant impact on performance. It controls the amount of VRAM used to cache texture images. Decreasing it can smooth out very bad performance due to texture thrashing on small GPUs. Increasing it can smooth ease IO load on large GPUs.</p>
 
